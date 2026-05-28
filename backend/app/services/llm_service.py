@@ -33,6 +33,8 @@ Rules you must follow:
 3. Do not include code blocks or backticks
 4. Always use lowercase for table and column names
 5. Make sure the query is valid PostgreSQL syntax
+6. For string comparisons always use case-insensitive matching with ILIKE or LOWER()
+
 
 Question: {question}
 

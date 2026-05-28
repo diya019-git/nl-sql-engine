@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from backend.app.core.database import test_connection, get_all_tables
 from backend.app.services.schema_service import get_full_schema, format_schema_for_llm
 from backend.app.services.llm_service import generate_sql
+from backend.app.services.query_service import execute_query, generate_and_execute
 
 app = FastAPI(
     title="NL-SQL Engine",
@@ -22,6 +23,9 @@ app.add_middleware(
 
 class QuestionRequest(BaseModel):
     question: str
+
+class SQLRequest(BaseModel):
+    sql: str
 
 @app.get("/")
 def root():
@@ -59,3 +63,13 @@ def get_schema_text():
 def generate_query(request: QuestionRequest):
     """Take a natural language question and return a SQL query."""
     return generate_sql(request.question)
+
+@app.post("/query/execute")
+def execute_sql(request: SQLRequest):
+    """Execute a raw SQL query and return the results."""
+    return execute_query(request.sql)
+
+@app.post("/query/ask")
+def ask_question(request: QuestionRequest):
+    """Full pipeline: natural language question → SQL → executed results."""
+    return generate_and_execute(request.question)
