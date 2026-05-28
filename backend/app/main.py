@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 from backend.app.core.database import test_connection, get_all_tables
 from backend.app.services.schema_service import get_full_schema, format_schema_for_llm
+from backend.app.services.llm_service import generate_sql
 
 app = FastAPI(
     title="NL-SQL Engine",
@@ -17,6 +19,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+class QuestionRequest(BaseModel):
+    question: str
 
 @app.get("/")
 def root():
@@ -49,3 +54,8 @@ def get_schema_text():
         formatted = format_schema_for_llm(result["schema"])
         return {"status": "success", "schema_text": formatted}
     return result
+
+@app.post("/query/generate")
+def generate_query(request: QuestionRequest):
+    """Take a natural language question and return a SQL query."""
+    return generate_sql(request.question)
