@@ -5,6 +5,7 @@ from backend.app.core.database import test_connection, get_all_tables
 from backend.app.services.schema_service import get_full_schema, format_schema_for_llm
 from backend.app.services.llm_service import generate_sql
 from backend.app.services.query_service import execute_query, generate_and_execute
+from backend.app.services.validation_service import validate_sql, clean_sql
 
 app = FastAPI(
     title="NL-SQL Engine",
@@ -12,7 +13,6 @@ app = FastAPI(
     version="0.1.0"
 )
 
-# This allows our React frontend to talk to this backend later
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:3000"],
@@ -61,7 +61,7 @@ def get_schema_text():
 
 @app.post("/query/generate")
 def generate_query(request: QuestionRequest):
-    """Take a natural language question and return a SQL query."""
+    """Take a natural language question and return a validated SQL query."""
     return generate_sql(request.question)
 
 @app.post("/query/execute")
@@ -73,3 +73,8 @@ def execute_sql(request: SQLRequest):
 def ask_question(request: QuestionRequest):
     """Full pipeline: natural language question → SQL → executed results."""
     return generate_and_execute(request.question)
+
+@app.post("/query/validate")
+def validate_query(request: SQLRequest):
+    """Validate a SQL query using sqlglot without executing it."""
+    return validate_sql(request.sql)
