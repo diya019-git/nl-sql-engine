@@ -6,6 +6,7 @@ from backend.app.services.schema_service import get_full_schema, format_schema_f
 from backend.app.services.llm_service import generate_sql
 from backend.app.services.query_service import execute_query, generate_and_execute
 from backend.app.services.validation_service import validate_sql, clean_sql
+from backend.app.services.history_service import get_history, get_stats
 
 app = FastAPI(
     title="NL-SQL Engine",
@@ -78,3 +79,13 @@ def ask_question(request: QuestionRequest):
 def validate_query(request: SQLRequest):
     """Validate a SQL query using sqlglot without executing it."""
     return validate_sql(request.sql)
+
+@app.get("/history")
+def query_history():
+    """Get the most recent 20 queries from history."""
+    return get_history()
+
+@app.get("/history/stats")
+def query_stats():
+    """Get summary statistics about query history."""
+    return get_stats()
