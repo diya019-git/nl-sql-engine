@@ -196,6 +196,6 @@ Create a `.env` file in the project root:
 
 ## Author
 
-**Chirag** — B.Tech Final Year Project
+**Diya** — B.Tech Final Year Project
 
 GitHub: [@diya019-git](https://github.com/diya019-git)
