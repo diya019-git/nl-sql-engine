@@ -2,7 +2,7 @@
 
 A natural language to SQL query engine that lets users ask questions about a database in plain English and get real results back instantly.
 
-**🚀 Live Demo:** https://your-actual-vercel-url.vercel.app
+**🚀 Live Demo:** https://nl-sql-engine.vercel.app
 
 Built as a B.Tech final year project to demonstrate end-to-end data engineering, LLM integration, and full-stack development skills.
 
