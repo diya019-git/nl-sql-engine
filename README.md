@@ -6,6 +6,8 @@ Built as a B.Tech final year project to demonstrate end-to-end data engineering,
 
 ---
 
+**Live demo:** https://nl-sql-engine.vercel.app
+
 ## Demo
 
 **Ask:** `Show me the top 5 products by unit price`
