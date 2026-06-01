@@ -18,3 +18,7 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Deployment utility scripts
+data/import_neon2.py
+data/import_neon3.py
