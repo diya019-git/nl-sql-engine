@@ -309,3 +309,65 @@
   font-size: 0.8rem;
   color: #9ca3af;
 }
+
+.csv-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.upload-box {
+  background: white;
+  border: 1.5px dashed #d1d5db;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.upload-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.file-input {
+  flex: 1;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.csv-info {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.csv-table-name {
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  color: #4f46e5;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.csv-columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.csv-col-badge {
+  font-size: 12px;
+  padding: 3px 10px;
+  background: #eef2ff;
+  color: #4338ca;
+  border-radius: 99px;
+  font-weight: 500;
+}
+
+.csv-row-count {
+  font-size: 0.85rem;
+  color: #6b7280;
+}

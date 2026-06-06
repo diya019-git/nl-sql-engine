@@ -1,0 +1,16 @@
+product,category,sales,region,month
+Laptop,Electronics,15000,North,January
+Phone,Electronics,8000,South,January
+Shirt,Clothing,2000,East,January
+Laptop,Electronics,18000,West,February
+Phone,Electronics,9500,North,February
+Shirt,Clothing,2500,South,February
+Headphones,Electronics,3000,East,March
+Jeans,Clothing,4000,West,March
+Laptop,Electronics,22000,North,March
+Phone,Electronics,11000,South,March
+Tablet,Electronics,7000,East,April
+Dress,Clothing,5000,West,April
+Laptop,Electronics,19000,North,April
+Phone,Electronics,10000,South,April
+Headphones,Electronics,3500,East,May
