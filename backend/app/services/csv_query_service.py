@@ -111,7 +111,18 @@ Please fix the SQL query. Return only the corrected SQL with no explanation."""
         cursor = conn.cursor(cursor_factory=RealDictCursor)
         cursor.execute(sql)
         rows = cursor.fetchall()
-        results = [dict(row) for row in rows]
+        
+        # Convert to plain dicts and handle NaN/None values
+        results = []
+        for row in rows:
+            clean_row = {}
+            for key, value in dict(row).items():
+                if value != value:  # NaN check
+                    clean_row[key] = None
+                else:
+                    clean_row[key] = value
+            results.append(clean_row)
+        
         columns = [desc[0] for desc in cursor.description]
         cursor.close()
         conn.close()
